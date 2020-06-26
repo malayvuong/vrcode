@@ -1,7 +1,7 @@
 {
   "name": "vrcode",
-  "version": "1.0.1",
-  "description": "A Vue component to generate QRCode and download.",
+  "version": "1.1.5",
+  "description": "A Vue component to generate QR Code and download.",
   "main": "src/index.js",
   "dependencies": {
     "qr.js": "^0.0.0"

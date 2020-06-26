@@ -21,10 +21,20 @@
 </template>
 
 <script>
+/**
+ * About pm-qrcode
+ *-------------------
+ * @author malayvuong
+ * PM-QRCODE mean Phien Malay QR Code
+ * Phien (https://github.com/phamanhphien)
+ * Malay = Malayvuong (https://github.com/malayvuong)
+ *
+**/
+
 import QRCodePM from './vue-qrcode.js'
 
 export default {
-    name: 'vrcode',
+    name: 'VrCode',
     props: {
         value: {
             type: String,

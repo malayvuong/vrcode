@@ -71,6 +71,8 @@ You can only download the qrcode to image by using type: `canvas`
 - Type: `String`
 - Default: `'canvas'`
 
+You can use `canvas` or `svg`. But SVG not support to download now.
+
 ### options
 
 - Type: `Object`
@@ -111,8 +113,6 @@ You can only download the qrcode to image by using type: `canvas`
 
     - Type: `String`
     - Default: `''`
-
-You can use `canvas` or `svg`. But SVG not support to download now.
 
 ## Milestone
 

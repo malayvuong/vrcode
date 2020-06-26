@@ -195,7 +195,7 @@ const QrcodeVue = {
       'div',
       {
         class: this.class || className,
-        attrs: { value, level, background, foreground },
+        // attrs: { value, level, background, foreground },
       },
       [
         renderAs === 'svg' ? createElement(
@@ -226,7 +226,7 @@ const QrcodeVue = {
               {
                 attrs: { height: size, width: size },
                 style: { width: size + 'px', height: size + 'px' },
-                ref: 'qrcode-vue',
+                ref: 'vrcode',
               },
               []
             ),
