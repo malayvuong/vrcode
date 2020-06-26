@@ -57,12 +57,12 @@ Passing `download` props, to show download button, it support:
 
 - Type: `Object`
 
-`text` - button inner text
-`visible` - setting download button visible or not
-`style` - setting download button style
-`class` - setting download button class name
-`type` - image type, such as image/png; use mime type for exactly force download
-`filename` - file name to download
+- `text` - button inner text
+- `visible` - setting download button visible or not
+- `style` - setting download button style
+- `class` - setting download button class name
+- `type` - image type, such as image/png; use mime type for exactly force download
+- `filename` - file name to download
 
 You can only download the qrcode to image by using type: `canvas`
 
@@ -74,11 +74,11 @@ You can only download the qrcode to image by using type: `canvas`
 ### options
 
 - Type: `Object`
+- Values:
+  - #### level
 
-#### level
-
-- Type: `String`
-- Default: `'L'`
+    - Type: `String`
+    - Default: `'L'`
 
 Possible levels are shown below:
 | Level            | Error resistance |
@@ -88,28 +88,28 @@ Possible levels are shown below:
 | **Q** (Quartile) | **~25%**         |
 | **H** (High)     | **~30%**         |
 
-#### padding
+  - #### padding
 
-- Type: `Number`
-- Default: `10`
+    - Type: `Number`
+    - Default: `10`
 
-**This is padding border of image (Because users is difficult to scan with dark mode/dark background, so we need an white padding/border)**
+    **This is padding border of image (Because users is difficult to scan with dark mode/dark background, so we need an white padding/border)**
 
 
-#### background
+  - #### background
 
-- Type: `String`
-- Default: `'#fff'`
+    - Type: `String`
+    - Default: `'#fff'`
 
-#### foreground
+  - #### foreground
 
-- Type: `String`
-- Default: `'#000'`
+    - Type: `String`
+    - Default: `'#000'`
 
-#### className
+  - #### className
 
-- Type: `String`
-- Default: `''`
+    - Type: `String`
+    - Default: `''`
 
 You can use `canvas` or `svg`. But SVG not support to download now.
 
