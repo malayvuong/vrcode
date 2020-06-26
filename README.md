@@ -2,11 +2,13 @@
 
 A Vue component to generate QR Code and download.
 
+![img](./assets/screenshot.png)
+
 ## Table of contents
 
 - [Getting started](#getting-started)
 - [Props](#props)
-- [Browser support](#browser-support)
+- [Milestone](#milestone)
 - [Versioning](#versioning)
 - [License](#license)
 
@@ -33,7 +35,10 @@ Vue.component('vrcode', vrcode);
         visible: true, type: 'image/png'
     }"
     value="A Vue component to generate QR Code and download."
-    :padding="10"
+    :options="{
+        size: 200,
+        level: 'Q'
+    }"
 ></vrcode>
 ```
 
@@ -46,20 +51,73 @@ Vue.component('vrcode', vrcode);
 
 The value of the QR code.
 
-### options
+### download
+
+Passing `download` props, to show download button, it support:
 
 - Type: `Object`
-- Default: `undefined`
 
-The options for the QR code generator. References the [node-qrcode's options](https://github.com/soldair/node-qrcode#qr-code-options).
+`text` - button inner text
+`visible` - setting download button visible or not
+`style` - setting download button style
+`class` - setting download button class name
+`type` - image type, such as image/png; use mime type for exactly force download
+`filename` - file name to download
 
-### tag
+You can only download the qrcode to image by using type: `canvas`
+
+### type
 
 - Type: `String`
 - Default: `'canvas'`
-- Options: `'canvas'`, `'img'` and other element tags.
 
-The tag name of the component's root element.
+### options
+
+- Type: `Object`
+
+#### level
+
+- Type: `String`
+- Default: `'L'`
+
+Possible levels are shown below:
+| Level            | Error resistance |
+|------------------|:----------------:|
+| **L** (Low)      | **~7%**          |
+| **M** (Medium)   | **~15%**         |
+| **Q** (Quartile) | **~25%**         |
+| **H** (High)     | **~30%**         |
+
+#### padding
+
+- Type: `Number`
+- Default: `10`
+
+**This is padding border of image (Because users is difficult to scan with dark mode/dark background, so we need an white padding/border)**
+
+
+#### background
+
+- Type: `String`
+- Default: `'#fff'`
+
+#### foreground
+
+- Type: `String`
+- Default: `'#000'`
+
+#### className
+
+- Type: `String`
+- Default: `''`
+
+You can use `canvas` or `svg`. But SVG not support to download now.
+
+## Milestone
+
+- Transparent background
+- PNG transparent background download
+- With centered logo
 
 ## Versioning
 

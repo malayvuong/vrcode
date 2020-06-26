@@ -2,13 +2,21 @@
 <div>
     <qrcode-vue
         :id="`qrcode-${randId}`"
-        :renderAs="type"
+        :renderAs="options.type"
         :value="value"
-        :padding="padding"
-        size="180"
-        level="H"
+        :padding="options.padding"
+        :className="options.className"
+        :size="options.size"
+        :level="options.level"
+        :background="options.background"
+        :foreground="options.foreground"
     ></qrcode-vue>
-    <a role="anchor" href="javascript:void(0);" @click="clickDownload" v-if="type === 'canvas' && download.visible" v-bind:style="download.style">{{download.text}}</a>
+    <a v-if="type === 'canvas' && download.visible"
+        role="anchor" href="javascript:void(0);"
+        @click="clickDownload"
+        v-bind:style="download.style"
+        :class="download.class || ''"
+    >{{download.text}}</a>
 </div>
 </template>
 
@@ -29,14 +37,43 @@ export default {
                 }
             },
         },
+        options: {
+            type: Object,
+            default: function() {
+                return {
+                    size: {
+                        type: [Number, String],
+                        default: 100,
+                        validator: (s) => isNaN(Number(s)) !== true,
+                    },
+                    background: {
+                        type: String,
+                        default: '#ffffff'
+                    },
+                    foreground: {
+                        type: String,
+                        default: '#000000'
+                    },
+                    className: {
+                        type: String,
+                        default: ''
+                    },
+                    level: {
+                        type: String,
+                        default: 'L',
+                        validator: (l) => ['L', 'Q', 'M', 'H'].indexOf(l) > -1,
+                    },
+                    padding: {
+                        type: Number,
+                        default: 10
+                    },
+                }
+            },
+        },
         type: {
             type: String,
             default: 'canvas'
         },
-        padding: {
-            type: Number,
-            default: 10
-        }
     },
     components: {
         'qrcode-vue': QRCodePM
