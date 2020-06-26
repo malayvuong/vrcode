@@ -78,7 +78,7 @@ You can use `canvas` or `svg`. But SVG not support to download now.
 - Type: `Object`
 - Values:
 
-  - #### level
+  - `level`
 
     - Type: `String`
     - Default: `'L'`
@@ -91,7 +91,7 @@ You can use `canvas` or `svg`. But SVG not support to download now.
     | **Q** (Quartile) | **~25%**         |
     | **H** (High)     | **~30%**         |
 
-  - #### padding
+  - `padding`
 
     - Type: `Number`
     - Default: `10`
@@ -99,17 +99,17 @@ You can use `canvas` or `svg`. But SVG not support to download now.
     **This is padding border of image (Because users is difficult to scan with dark mode/dark background, so we need an white padding/border)**
 
 
-  - #### background
+  - `background`
 
     - Type: `String`
     - Default: `'#fff'`
 
-  - #### foreground
+  - `foreground`
 
     - Type: `String`
     - Default: `'#000'`
 
-  - #### className
+  - `className`
 
     - Type: `String`
     - Default: `''`
