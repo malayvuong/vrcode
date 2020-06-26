@@ -75,18 +75,19 @@ You can only download the qrcode to image by using type: `canvas`
 
 - Type: `Object`
 - Values:
+
   - #### level
 
     - Type: `String`
     - Default: `'L'`
 
-Possible levels are shown below:
-| Level            | Error resistance |
-|------------------|:----------------:|
-| **L** (Low)      | **~7%**          |
-| **M** (Medium)   | **~15%**         |
-| **Q** (Quartile) | **~25%**         |
-| **H** (High)     | **~30%**         |
+    Possible levels are shown below:
+    | Level            | Error resistance |
+    |------------------|:----------------:|
+    | **L** (Low)      | **~7%**          |
+    | **M** (Medium)   | **~15%**         |
+    | **Q** (Quartile) | **~25%**         |
+    | **H** (High)     | **~30%**         |
 
   - #### padding
 
