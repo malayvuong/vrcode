@@ -1,4 +1,4 @@
-# vqrcode (Vue QR Code)
+# vrcode (Vue QR Code)
 
 A Vue component to generate QR Code and download.
 
@@ -16,7 +16,7 @@ A Vue component to generate QR Code and download.
 
 ### Install
 ```shell
-npm i vqrcode
+npm i vrcode
 ```
 
 ### Usage
