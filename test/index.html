@@ -10,8 +10,10 @@
 </head>
 <body>
 <div id="app">
+    {{ text }}
     <vrcode
         :value="text"
+        v-model="text"
     ></vrcode>
 </div>
 <script>
@@ -19,7 +21,8 @@ var app = new Vue({
     el: '#app',
     data: {
         text: 'Hello Vue!'
-    }
+    },
+    components: {vrcode},
 })
 </script>
 </body>
