@@ -16,7 +16,7 @@
       role="anchor"
       href="javascript:void(0);"
       :class="download.class || ''"
-      :style="download.style || ''"
+      :style="download.style"
       @click="clickDownload"
     >{{ download.text }}</a>
   </div>

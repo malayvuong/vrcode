@@ -31,8 +31,9 @@ npm i @ispa.io/vrcode
 ### Usage
 ```js
 import Vue from 'vue';
+import vrcode from '@ispa.io/vrcode'
 
-Vue.component('vrcode', require('vrcode').default);
+Vue.component('vrcode', vrcode);
 
 ```
 ### Example
