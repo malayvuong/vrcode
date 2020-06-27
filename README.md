@@ -2,6 +2,16 @@
 
 A Vue component to generate QR Code and download.
 
+<p align="center">
+  <a href="https://bundlephobia.com/result?p=vrcode" target="_blank" rel="noopener noreferrer"><img src="https://flat.badgen.net/bundlephobia/minzip/vrcode" alt="Minified + gzip package size for vrcode in KB" class="badge--in-table"></a>
+  <a href="https://circleci.com/gh/malayvuong/vrcode/tree/dev"><img src="https://img.shields.io/circleci/project/github/malayvuong/vrcode/dev.svg?sanitize=true" alt="Build Status"></a>
+  <a href="https://npmcharts.com/compare/vrcode?minimal=true"><img src="https://img.shields.io/npm/dm/vrcode.svg?sanitize=true" alt="Downloads"></a>
+  <a href="https://www.npmjs.com/package/vrcode"><img src="https://img.shields.io/npm/v/vrcode.svg?sanitize=true" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/vrcode"><img src="https://img.shields.io/npm/l/vrcode.svg?sanitize=true" alt="License"></a>
+  <a href="https://m.me/malayvuong"><img src="https://img.shields.io/badge/chat-messenger-green" alt="Chat"></a>
+</p>
+
+
 ![img](./assets/screenshot.png)
 
 ## Table of contents
