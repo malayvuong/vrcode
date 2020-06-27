@@ -1,6 +1,4 @@
-# vrcode (Vue QR Code)
-
-A Vue component to generate QR Code and download.
+<h1 align="center">vrcode (Vue QR Code)</h1>
 
 <p align="center">
   <a href="https://bundlephobia.com/result?p=vrcode" target="_blank" rel="noopener noreferrer"><img src="https://flat.badgen.net/bundlephobia/minzip/vrcode" alt="Minified + gzip package size for vrcode in KB" class="badge--in-table"></a>
@@ -11,6 +9,7 @@ A Vue component to generate QR Code and download.
   <a href="https://m.me/malayvuong"><img src="https://img.shields.io/badge/chat-messenger-green" alt="Chat"></a>
 </p>
 
+A Vue component to generate QR Code and download.
 
 ![img](./assets/screenshot.png)
 
