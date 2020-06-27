@@ -3,6 +3,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### --- Version 1.
 
+### --- Version 1.1.7
+This version update:
+* Fixed $refs name
+
 ### --- Version 1.1.5
 This version update:
 * Added CHANGELOG
