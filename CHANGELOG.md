@@ -3,6 +3,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### --- Version 1.
 
+#### --- Version 1.2.4
+This version update:
+* Fixed bugs `template not defined`
+
 #### --- Version 1.2.1
 This version update:
 * Fixed options default values

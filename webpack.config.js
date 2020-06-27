@@ -8,11 +8,6 @@ module.exports = {
         filename: 'vrcode.js',
         library: 'vrcode'
     },
-    // plugins: [
-    //     new UglifyJsPlugin({
-    //         exclude: [/\.min\.js$/gi] // skip pre-minified libs
-    //     })
-    // ],
     module: {
       rules: [
         {

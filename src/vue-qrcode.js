@@ -1,6 +1,5 @@
 import QRCode from 'qr.js/lib/QRCode'
 import ErrorCorrectLevel from 'qr.js/lib/ErrorCorrectLevel'
-
 /**
  * Encode UTF16 to UTF8.
  * See: http://jonisalonen.com/2012/from-utf-16-to-utf-8-in-javascript/
@@ -51,7 +50,6 @@ function generatePath(modules, margin = 0) {
         start = null
         return
       }
-
       // end of row, clean up or skip
       if (x === row.length - 1) {
         if (!cell) {
@@ -181,8 +179,8 @@ const QrcodeVue = {
   render(createElement) {
     const {
       classname,
-      value,
-      level,
+      // value,
+      // level,
       background,
       foreground,
       size,

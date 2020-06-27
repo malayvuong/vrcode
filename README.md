@@ -25,15 +25,15 @@ A Vue component to generate QR Code and download.
 
 ### Install
 ```shell
-npm i vrcode
+npm i @ispa.io/vrcode
 ```
 
 ### Usage
 ```js
 import Vue from 'vue';
-import vrcode from 'vrcode';
 
-Vue.component('vrcode', vrcode);
+Vue.component('vrcode', require('vrcode').default);
+
 ```
 ### Example
 ```html
