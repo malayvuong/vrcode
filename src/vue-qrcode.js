@@ -159,7 +159,7 @@ const QrcodeVue = {
         // For level 40, 31329 -> 2
         this.fgPath = generatePath(cells);
       } else {
-        const canvas = this.$refs['qrcode-vue']
+        const canvas = this.$refs['vrcode']
         const ctx = canvas.getContext('2d')
 
         canvas.height = canvas.width = _size * scale
