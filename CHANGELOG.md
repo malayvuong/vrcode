@@ -3,11 +3,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### --- Version 1.
 
-### --- Version 1.1.7
+#### --- Version 1.2.1
+This version update:
+* Fixed options default values
+* Fixed `lint` warnings
+
+#### --- Version 1.1.7
 This version update:
 * Fixed $refs name
 
-### --- Version 1.1.5
+#### --- Version 1.1.5
 This version update:
 * Added CHANGELOG
 * Change ref to `vrcode`

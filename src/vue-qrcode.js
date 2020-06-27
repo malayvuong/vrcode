@@ -88,7 +88,7 @@ const QrcodeVue = {
       required: true,
       default: '',
     },
-    className: {
+    classname: {
       type: String,
       default: '',
     },
@@ -110,7 +110,7 @@ const QrcodeVue = {
       type: String,
       default: '#000',
     },
-    renderAs: {
+    renderas: {
       type: String,
       required: false,
       default: 'canvas',
@@ -135,7 +135,7 @@ const QrcodeVue = {
   },
   methods: {
     render() {
-      const { value, size, level, background, foreground, renderAs, padding } = this
+      const { value, size, level, background, foreground, renderas, padding } = this
       const _size = size >>> 0 // size to number
 
       // We'll use type===-1 to force QRCode to automatically pick the best type
@@ -148,7 +148,7 @@ const QrcodeVue = {
       const tileH = (_size - (2 * padding)) / cells.length
       const scale = window.devicePixelRatio || 1
 
-      if (renderAs === 'svg') {
+      if (renderas === 'svg') {
         this.numCells = cells.length
 
         // Drawing strategy: instead of a rect per module, we're going to create a
@@ -159,7 +159,7 @@ const QrcodeVue = {
         // For level 40, 31329 -> 2
         this.fgPath = generatePath(cells);
       } else {
-        const canvas = this.$refs['vrcode']
+        const canvas = this.$refs.vrcode
         const ctx = canvas.getContext('2d')
 
         canvas.height = canvas.width = _size * scale
@@ -180,13 +180,13 @@ const QrcodeVue = {
   },
   render(createElement) {
     const {
-      className,
+      classname,
       value,
       level,
       background,
       foreground,
       size,
-      renderAs,
+      renderas,
       numCells,
       fgPath,
     } = this
@@ -194,11 +194,11 @@ const QrcodeVue = {
     return createElement(
       'div',
       {
-        class: this.class || className,
+        class: this.class || classname,
         // attrs: { value, level, background, foreground },
       },
       [
-        renderAs === 'svg' ? createElement(
+        renderas === 'svg' ? createElement(
               'svg',
               {
                 attrs: {

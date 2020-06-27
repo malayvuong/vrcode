@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test VRCODE</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="../dist/vrcode.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <vrcode
+        :value="text"
+    ></vrcode>
+</div>
+<script>
+var app = new Vue({
+    el: '#app',
+    data: {
+        text: 'Hello Vue!'
+    }
+})
+</script>
+</body>
+</html>
