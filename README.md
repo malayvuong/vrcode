@@ -56,10 +56,10 @@ Vue.component('vrcode', vrcode);
 
 ### value
 
-- Type: `String`
+- Type: `String` or `Object`
 - Default: `undefined`
 
-The value of the QR code.
+The value of the QR code. `Object` type used for some helpers tool below.
 
 ### download
 
@@ -124,6 +124,122 @@ You can use `canvas` or `svg`. But SVG not support to download now.
     - Type: `String`
     - Default: `''`
 
+### helpers
+#### What are helpers?
+Helpers are an easy way to create QrCodes that cause a reader to perform a certain action when scanned.
+
+#### Email
+This helper generates an e-mail qrcode that is able to fill in the e-mail address, subject, and body.
+
+Example:
+```html
+<vrcode
+    :value="{
+      address: 'email@example.com',
+      subject: 'Hello',
+      body: 'This is body'
+    }"
+    helpers="email"
+></vrcode>
+```
+
+#### Call a number
+This helper generates a QrCode that can be scanned and then dials a number.
+
+Example:
+```html
+<vrcode
+    value="+1 98-765-43-21"
+    helpers="call"
+></vrcode>
+```
+
+#### SMS (Text Messages)
+This helper makes SMS messages that can be prefilled with the send to address and body of the message.
+
+Example:
+```html
+<vrcode
+    :value="{
+      number: '+1 98-765-43-21',
+      message: 'Hello, this message can be null'
+    }"
+    helpers="sms"
+></vrcode>
+```
+
+#### Geo
+This helper generates a latitude and longitude that a phone can read and opens the location in Google Maps or similar app.
+
+Example:
+```html
+<vrcode
+    :value="{
+      lng: 10.7800965,
+      lat: 106.6854548,
+      name: 'QR Guiding'
+    }"
+    helpers="geo"
+></vrcode>
+```
+
+#### Wifi
+This helpers makes scannable QrCodes that can connect a phone to a WiFI network.
+
+Example:
+```html
+<vrcode
+    :value="{
+      encrypt: 'WPA',
+      ssid: 'Your SSID or Network Name',
+      password: 'Your-Wifi-Password',
+      hidden: true
+    }"
+    helpers="wifi"
+></vrcode>
+```
+- `encrypt`: `WPA`, `WEP` or can be `null`
+- `hidden`: `true` or `false`
+
+#### Coin Wallet Address
+This helper generates a scannable bitcoin (and other coins) to send payments.
+
+Example:
+```html
+<vrcode
+    :value="{
+      coin: 'ethereum',
+      address: '0x0000000000000000000000000000000000000000',
+      amount: 0.00,
+      message: 'Hello world'
+    }"
+    helpers="coin"
+></vrcode>
+```
+- `coin`: default is `bitcoin`, you can change it by your own coin code (`ethereum`, `bitcoincash`, `dash`...)
+- `coin`, `address`, `amount` has required
+- `message` has not required.
+
+#### Event
+This helper generates a scannable event tag to add into calendar events.
+
+Example:
+```html
+<vrcode
+    :value="{
+      name: 'Event name',
+      allDay: false,
+      start: '20200702T080000Z',
+      end: '20200702T2030000Z',
+      location: 'Event location',
+      description: 'Event descriptions'
+    }"
+    helpers="event"
+></vrcode>
+```
+- `allDay`: if set `true` => start and end has format: `20200702`
+- `start` and `end`: timezone is UTC
+
 ## Milestone
 
 - Transparent background
@@ -137,5 +253,12 @@ Maintained under the [Semantic Versioning guidelines](https://semver.org/).
 ## License
 
 [MIT](https://opensource.org/licenses/MIT) © [Malayvuong](https://malayvuong.com/)
+
+## Invite me a cup of coffee
+If you like this project and want to contribute us, then you can send us a cup of coffee by this ways below:
+
+| PAYPAL.ME            | MOMO App (Vietnam) |
+|:--------------------:|:------------------:|
+| ![img](./assets/qr-code-paypal.png) | ![img](./assets/qr-code-momo.jpg) |
 
 [⬆ back to top](#table-of-contents)

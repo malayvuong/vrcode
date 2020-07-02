@@ -3,7 +3,7 @@
     <qrcode-vue
       :id="`qrcode-${randId}`"
       :renderas="options.type"
-      :value="value"
+      :value="textToQR"
       :padding="options.padding"
       :classname="options.className"
       :size="options.size"
@@ -42,7 +42,7 @@ export default {
     },
     props: {
         value: {
-            type: String, default: ''
+            type: [String, Object], default: null
         },
         download: {
             type: Object,
@@ -68,16 +68,63 @@ export default {
         type: {
             type: String, default: 'canvas'
         },
+
+        // Helpers options
+        helpers: {type: String, default: 'text'},
     },
     data() {
         return {
-            randId: ''
+            randId: '',
+            textToQR: ''
         }
     },
     created() {
         this.randId = Math.floor((Math.random() * 1000) + 1);
+
+        this.setTextToQr()
     },
     methods: {
+        /**
+         * Set value by helpers type
+         *-------------------
+         * @author malayvuong
+         *
+        **/
+        setTextToQr() {
+            switch (this.helpers) {
+                case "email":
+                    this.textToQR = `MATMSG:TO:${ this.value.address || null }${ this.value.subject ? ';SUB:' + this.value.subject : '' }${ this.value.body ? ';BODY:' + this.value.body : '' };`
+                    break;
+                case "call":
+                    this.textToQR = `tel:${ this.value || 0 }`
+                    break;
+                case "sms":
+                    this.textToQR = `sms:${ this.value.number || 0 }${ this.value.message ? ':' + this.value.message : '' }`
+                    break;
+                case "geo":
+                    this.textToQR = `geo:${ this.value.lng || 0 },${ this.value.lat || 0 }${ this.value.name ? '?q=' + this.value.name : '' }`
+                    break;
+                case "wifi":
+                    this.textToQR = `WIFI:T:${ this.value.encrypt || 'nopass' };S:${ this.value.ssid };P:${ this.value.password };H:${ this.value.hidden || '' };`
+                    break;
+                case "coin":
+                    this.textToQR = `${ this.value.coin || 'bitcoin' }:${ this.value.address }?amount=${ this.value.amount || 0 }${ this.value.message ? '&message=' + this.value.message : ''}`
+                    break;
+                case "event":
+                    this.textToQR = `BEGIN:VEVENT
+SUMMARY:${ this.value.event.name || '' }
+DTSTART${ this.value.allDay ? ';VALUE=DATE:' + this.value.start : ':' + this.value.start }
+DTEND${ this.value.allDay ? ';VALUE=DATE:' + this.value.end : ':' + this.value.end }
+LOCATION:${ this.value.location }
+DESCRIPTION:${ this.value.description }
+END:VEVENT`
+                    break;
+                default:
+                    this.textToQR = parseString(this.value)
+                    break;
+            }
+        },
+        
         // click to download image
         // Donwload Only apply for canvas
         clickDownload(e) {
