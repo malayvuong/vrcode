@@ -112,7 +112,7 @@ export default {
                     break;
                 case "event":
                     this.textToQR = `BEGIN:VEVENT
-SUMMARY:${ this.value.event.name || '' }
+SUMMARY:${ this.value.name || '' }
 DTSTART${ this.value.allDay ? ';VALUE=DATE:' + this.value.start : ':' + this.value.start }
 DTEND${ this.value.allDay ? ';VALUE=DATE:' + this.value.end : ':' + this.value.end }
 LOCATION:${ this.value.location }
@@ -136,7 +136,7 @@ NOTE:${ this.value.note || '' }
 END:VCARD`
                     break;
                 default:
-                    this.textToQR = parseString(this.value)
+                    this.textToQR = this.value.toString()
                     break;
             }
         },

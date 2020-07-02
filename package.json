@@ -1,12 +1,12 @@
 {
   "name": "@ispa.io/vrcode",
-  "version": "1.3.2",
+  "version": "1.3.4",
   "description": "A Vue component to generate QR Code and download.",
   "main": "src/index.js",
   "dependencies": {
-    "qr.js": "^0.0.0"
   },
   "devDependencies": {
+    "qr.js": "^0.0.0",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
