@@ -78,6 +78,11 @@ export default {
             textToQR: ''
         }
     },
+    watch: {
+        value(val) {
+            this.setTextToQr()
+        }
+    },
     created() {
         this.randId = Math.floor((Math.random() * 1000) + 1);
 

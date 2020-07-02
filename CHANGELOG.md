@@ -3,6 +3,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### --- Version 1.
 
+#### --- Version 1.3.6
+This version update:
+* Fixed bugs change value not generate code
+* Added new helpers
+* Fixed bugs value.name (event helper)
+* updated package.json
+
 #### --- Version 1.2.4
 This version update:
 * Fixed bugs `template not defined`
