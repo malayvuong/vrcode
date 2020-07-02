@@ -124,14 +124,13 @@ You can use `canvas` or `svg`. But SVG not support to download now.
     - Type: `String`
     - Default: `''`
 
-### helpers
+### Helpers
 #### What are helpers?
 Helpers are an easy way to create QrCodes that cause a reader to perform a certain action when scanned.
 
 #### Email
 This helper generates an e-mail qrcode that is able to fill in the e-mail address, subject, and body.
 
-Example:
 ```html
 <vrcode
     :value="{
@@ -146,7 +145,6 @@ Example:
 #### Call a number
 This helper generates a QrCode that can be scanned and then dials a number.
 
-Example:
 ```html
 <vrcode
     value="+1 98-765-43-21"
@@ -157,7 +155,6 @@ Example:
 #### SMS (Text Messages)
 This helper makes SMS messages that can be prefilled with the send to address and body of the message.
 
-Example:
 ```html
 <vrcode
     :value="{
@@ -171,7 +168,6 @@ Example:
 #### Geo
 This helper generates a latitude and longitude that a phone can read and opens the location in Google Maps or similar app.
 
-Example:
 ```html
 <vrcode
     :value="{
@@ -186,7 +182,6 @@ Example:
 #### Wifi
 This helpers makes scannable QrCodes that can connect a phone to a WiFI network.
 
-Example:
 ```html
 <vrcode
     :value="{
@@ -204,7 +199,6 @@ Example:
 #### Coin Wallet Address
 This helper generates a scannable bitcoin (and other coins) to send payments.
 
-Example:
 ```html
 <vrcode
     :value="{
@@ -223,7 +217,6 @@ Example:
 #### Event
 This helper generates a scannable event tag to add into calendar events.
 
-Example:
 ```html
 <vrcode
     :value="{
@@ -243,7 +236,6 @@ Example:
 #### meCard AND vCard
 This helpers makes scannable QrCodes that add to contact list. You can use `mecard` or `vcard`. Notes that `mecard` has not `title` value.
 
-Example:
 ```html
 <vrcode
     :value="{
@@ -256,7 +248,7 @@ Example:
       title: 'Your Title',
       note: 'Your Notes'
     }"
-    helpers="mecard"
+    helpers="vcard"
 ></vrcode>
 ```
 
