@@ -119,6 +119,22 @@ LOCATION:${ this.value.location }
 DESCRIPTION:${ this.value.description }
 END:VEVENT`
                     break;
+                case "mecard":
+                    this.textToQR = `MECARD:N:${ this.value.name || 'Your name' };ORG:${ this.value.company || 'Your company' };TEL:${ this.value.phone || '' };URL:${ this.value.url || '' };EMAIL:${ this.value.email || '' };ADR: ${ this.value.address || '' };NOTE:${ this.value.title || '' } ${ this.value.note || '' };;`
+                    break;
+                case "vcard":
+                    this.textToQR = `BEGIN:VCARD
+VERSION:3.0
+N:${ this.value.name || 'Your name' }
+ORG:${ this.value.company || 'Your company' }
+TEL:${ this.value.phone || '' }
+URL:${ this.value.url || '' }
+EMAIL:${ this.value.email || '' }
+TITLE:${ this.value.title || '' }
+ADR: ${ this.value.address || '' }
+NOTE:${ this.value.note || '' }
+END:VCARD`
+                    break;
                 default:
                     this.textToQR = parseString(this.value)
                     break;

@@ -240,6 +240,27 @@ Example:
 - `allDay`: if set `true` => start and end has format: `20200702`
 - `start` and `end`: timezone is UTC
 
+#### meCard AND vCard
+This helpers makes scannable QrCodes that add to contact list. You can use `mecard` or `vcard`. Notes that `mecard` has not `title` value.
+
+Example:
+```html
+<vrcode
+    :value="{
+      name: 'Your name',
+      company: 'Your company name',
+      phone: 'Your Phone number',
+      url: 'Your Website Url',
+      email: 'Your Email address',
+      address: 'Your Address',
+      title: 'Your Title',
+      note: 'Your Notes'
+    }"
+    helpers="mecard"
+></vrcode>
+```
+
+
 ## Milestone
 
 - Transparent background
