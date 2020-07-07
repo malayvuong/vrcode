@@ -25,7 +25,8 @@ A Vue component to generate QR Code and download.
 
 ### Install
 ```shell
-npm i @ispa.io/vrcode
+npm i @ispa.io/vrcode     // npm
+yarn add @ispa.io/vrcode  //  yarn
 ```
 
 ### Usage
