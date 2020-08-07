@@ -90,6 +90,8 @@ You can use `canvas` or `svg`. But SVG not support to download now.
 
 Transparent background for canvas and download png image. If `transparent` is setted, `background` option will not work.
 
+**Notes: If after you run `npm update` but the QR Code not generate transparent background, please run `npm clean-install` and run build again.**
+
 ### options
 
 - Type: `Object`

@@ -16,13 +16,14 @@
       <p>Text: {{ text }}</p>
       <vrcode
         :value="text"
-        v-model="text" transparent
+        v-model="text"
         :download="{
           text: 'Download',
           filename: 'file-name.png',
           visible: true, type: 'image/png',
           style: 'color: #abc123; padding-top: 15px; display: block;'
         }"
+        transparent
       ></vrcode>
     </div>
   </center>

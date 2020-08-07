@@ -121,7 +121,8 @@ const QrcodeVue = {
       default: 10,
     },
     transparent: {
-      type: Boolean, default: false
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -178,7 +179,6 @@ const QrcodeVue = {
 
         cells.forEach(function(row, rdx) {
           row.forEach(function(cell, cdx) {
-            ctx.fillStyle = cell ? foreground : background
             const w = Math.ceil((cdx + 1) * tileW) - Math.floor(cdx * tileW)
             const h = Math.ceil((rdx + 1) * tileH) - Math.floor(rdx * tileH)
             if(cell) {

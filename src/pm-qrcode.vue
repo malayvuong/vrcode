@@ -76,15 +76,15 @@ export default {
         transparent: {type: Boolean, default: false},
     },
     data() {
-        return {
-            randId: '',
-            textToQR: ''
-        }
+      return {
+        randId: '',
+        textToQR: ''
+      }
     },
     watch: {
-        value(val) {
-            this.setTextToQr()
-        }
+      value(val) {
+        this.setTextToQr()
+      }
     },
     created() {
         this.randId = Math.floor((Math.random() * 1000) + 1);
