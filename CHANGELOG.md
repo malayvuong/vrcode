@@ -3,6 +3,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### --- Version 1.
 
+#### --- Version 1.4.0
+This version update:
+* Fixed test environment
+* Added transparent background for CANVAS & PNG download
+* Removed some devDependencies not used
+
 #### --- Version 1.3.6
 This version update:
 * Fixed bugs change value not generate code

@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test VRCODE</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="../dist/vrcode.js"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test VRCODE</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="../dist/vrcode.js"></script>
+  <style>
+    body{background: #efefef; color: black;}
+  </style>
 </head>
 <body>
-<div id="app">
-    {{ text }}
-    <vrcode
+  <center>
+    <div id="app">
+      <p>Text: {{ text }}</p>
+      <vrcode
         :value="text"
-        v-model="text"
-    ></vrcode>
-</div>
+        v-model="text" transparent
+        :download="{
+          text: 'Download',
+          filename: 'file-name.png',
+          visible: true, type: 'image/png',
+          style: 'color: #abc123; padding-top: 15px; display: block;'
+        }"
+      ></vrcode>
+    </div>
+  </center>
 <script>
 var app = new Vue({
     el: '#app',
     data: {
-        text: 'Hello Vue!'
+      text: 'Hello User! Let\'s scan me!'
     },
-    components: {vrcode},
 })
+Vue.component('vrcode', vrcode);
 </script>
 </body>
 </html>

@@ -120,6 +120,9 @@ const QrcodeVue = {
       type: Number,
       default: 10,
     },
+    transparent: {
+      type: Boolean, default: false
+    }
   },
   data() {
     return {
@@ -135,7 +138,7 @@ const QrcodeVue = {
   },
   methods: {
     render() {
-      const { value, size, level, background, foreground, renderas, padding } = this
+      const { value, size, level, background, foreground, renderas, padding, transparent } = this
       const _size = size >>> 0 // size to number
 
       // We'll use type===-1 to force QRCode to automatically pick the best type
@@ -163,16 +166,35 @@ const QrcodeVue = {
         const ctx = canvas.getContext('2d')
 
         canvas.height = canvas.width = _size * scale
+
         ctx.scale(scale, scale)
         ctx.fillStyle = background;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        //  Set background
+        if(transparent) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        } else {
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
 
         cells.forEach(function(row, rdx) {
           row.forEach(function(cell, cdx) {
             ctx.fillStyle = cell ? foreground : background
             const w = Math.ceil((cdx + 1) * tileW) - Math.floor(cdx * tileW)
             const h = Math.ceil((rdx + 1) * tileH) - Math.floor(rdx * tileH)
-            ctx.fillRect(Math.round(cdx * tileW) + padding, Math.round(rdx * tileH) + padding, w, h)
+            if(cell) {
+              ctx.fillStyle = foreground
+            } else {
+              if(transparent) {
+
+              }else {
+                ctx.fillStyle = background
+              }
+            }
+            if(!cell && transparent) {
+              ctx.clearRect(Math.round(cdx * tileW) + padding, Math.round(rdx * tileH) + padding, w, h);
+            } else {
+              ctx.fillRect(Math.round(cdx * tileW) + padding, Math.round(rdx * tileH) + padding, w, h)
+            }
           })
         })
       }

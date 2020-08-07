@@ -10,6 +10,7 @@
       :level="options.level"
       :background="options.background"
       :foreground="options.foreground"
+      :transparent="transparent"
     />
     <a
       v-if="type === 'canvas' && download.visible"
@@ -53,17 +54,17 @@ export default {
             },
         },
         options: {
-            type: Object,
-            default: function() {
-                return {
-                    size: 100,
-                    background: '#ffffff',
-                    foreground: '#000000',
-                    className: '',
-                    level: 'L',
-                    padding: 10
-                }
-            },
+          type: Object,
+          default: function() {
+            return {
+              size: 100,
+              background: '#ffffff',
+              foreground: '#000000',
+              className: '',
+              level: 'L',
+              padding: 10
+            }
+          },
         },
         type: {
             type: String, default: 'canvas'
@@ -71,6 +72,8 @@ export default {
 
         // Helpers options
         helpers: {type: String, default: 'text'},
+        //  Set Transparent Background (Only for Canvas)
+        transparent: {type: Boolean, default: false},
     },
     data() {
         return {
@@ -145,7 +148,7 @@ END:VCARD`
                     break;
             }
         },
-        
+
         // click to download image
         // Donwload Only apply for canvas
         clickDownload(e) {

@@ -1,7 +1,6 @@
 <h1 align="center">vrcode (Vue QR Code)</h1>
 
 <p align="center">
-  <a href="https://bundlephobia.com/result?p=@ispa.io/vrcode" target="_blank" rel="noopener noreferrer"><img src="https://flat.badgen.net/bundlephobia/minzip/@ispa.io/vrcode" alt="Minified + gzip package size for vrcode in KB" class="badge--in-table"></a>
   <a href="https://circleci.com/gh/malayvuong/vrcode/tree/dev"><img src="https://img.shields.io/circleci/project/github/malayvuong/vrcode/dev.svg?sanitize=true" alt="Build Status"></a>
   <a href="https://npmcharts.com/compare/@ispa.io/vrcode?minimal=true"><img src="https://img.shields.io/npm/dm/@ispa.io/vrcode.svg?sanitize=true" alt="Downloads"></a>
   <a href="https://www.npmjs.com/package/@ispa.io/vrcode"><img src="https://img.shields.io/npm/v/@ispa.io/vrcode.svg?sanitize=true" alt="Version"></a>
@@ -11,7 +10,7 @@
 
 A Vue component to generate QR Code and download.
 
-![img](./assets/screenshot.png)
+<img src="./assets/screenshot.png" alt=" screenshot ">
 
 ## Table of contents
 
@@ -40,16 +39,16 @@ Vue.component('vrcode', vrcode);
 ### Example
 ```html
 <vrcode
-    :download="{
-        text: 'Download',
-        filename: 'file-name.png',
-        visible: true, type: 'image/png'
-    }"
-    value="A Vue component to generate QR Code and download."
-    :options="{
-        size: 200,
-        level: 'Q'
-    }"
+  :download="{
+    text: 'Download',
+    filename: 'file-name.png',
+    visible: true, type: 'image/png'
+  }"
+  value="A Vue component to generate QR Code and download."
+  :options="{
+    size: 200,
+    level: 'Q'
+  }"
 ></vrcode>
 ```
 
@@ -84,6 +83,13 @@ You can only download the qrcode to image by using type: `canvas`
 
 You can use `canvas` or `svg`. But SVG not support to download now.
 
+### transparent
+
+- Type: `Boolean`
+- Default: `false`
+
+Transparent background for canvas and download png image. If `transparent` is setted, `background` option will not work.
+
 ### options
 
 - Type: `Object`
@@ -107,7 +113,7 @@ You can use `canvas` or `svg`. But SVG not support to download now.
     - Type: `Number`
     - Default: `10`
 
-    **This is padding border of image (Because users is difficult to scan with dark mode/dark background, so we need an white padding/border)**
+    **This is padding border of image (Because users is difficult to scan with dark mode/dark background, so we need a white padding/border)**
 
 
   - `background`
@@ -185,13 +191,13 @@ This helpers makes scannable QrCodes that can connect a phone to a WiFI network.
 
 ```html
 <vrcode
-    :value="{
-      encrypt: 'WPA',
-      ssid: 'Your SSID or Network Name',
-      password: 'Your-Wifi-Password',
-      hidden: true
-    }"
-    helpers="wifi"
+  :value="{
+    encrypt: 'WPA',
+    ssid: 'Your SSID or Network Name',
+    password: 'Your-Wifi-Password',
+    hidden: true
+  }"
+  helpers="wifi"
 ></vrcode>
 ```
 - `encrypt`: `WPA`, `WEP` or can be `null`
@@ -202,13 +208,13 @@ This helper generates a scannable bitcoin (and other coins) to send payments.
 
 ```html
 <vrcode
-    :value="{
-      coin: 'ethereum',
-      address: '0x0000000000000000000000000000000000000000',
-      amount: 0.00,
-      message: 'Hello world'
-    }"
-    helpers="coin"
+  :value="{
+    coin: 'ethereum',
+    address: '0x0000000000000000000000000000000000000000',
+    amount: 0.00,
+    message: 'Hello world'
+  }"
+  helpers="coin"
 ></vrcode>
 ```
 - `coin`: default is `bitcoin`, you can change it by your own coin code (`ethereum`, `bitcoincash`, `dash`...)
@@ -220,15 +226,15 @@ This helper generates a scannable event tag to add into calendar events.
 
 ```html
 <vrcode
-    :value="{
-      name: 'Event name',
-      allDay: false,
-      start: '20200702T080000Z',
-      end: '20200702T2030000Z',
-      location: 'Event location',
-      description: 'Event descriptions'
-    }"
-    helpers="event"
+  :value="{
+    name: 'Event name',
+    allDay: false,
+    start: '20200702T080000Z',
+    end: '20200702T2030000Z',
+    location: 'Event location',
+    description: 'Event descriptions'
+  }"
+  helpers="event"
 ></vrcode>
 ```
 - `allDay`: if set `true` => start and end has format: `20200702`
@@ -256,9 +262,9 @@ This helpers makes scannable QrCodes that add to contact list. You can use `meca
 
 ## Milestone
 
-- Transparent background
-- PNG transparent background download
-- With centered logo
+[x] Transparent background
+[x] PNG transparent background download
+[ ] With centered logo
 
 ## Versioning
 
@@ -273,6 +279,6 @@ If you like this project and want to contribute us, then you can send us a cup o
 
 | PAYPAL.ME            | MOMO App (Vietnam) |
 |:--------------------:|:------------------:|
-| ![img](./assets/qr-code-paypal.png) | ![img](./assets/qr-code-momo.jpg) |
+| <img src="./assets/qr-code-paypal.png" style="width: 100px" alt="support us"> | <img src="./assets/qr-code-momo.jpg" style="width: 100px" alt="support us"> |
 
 [⬆ back to top](#table-of-contents)
