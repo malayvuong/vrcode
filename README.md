@@ -262,9 +262,9 @@ This helpers makes scannable QrCodes that add to contact list. You can use `meca
 
 ## Milestone
 
-[x] Transparent background
-[x] PNG transparent background download
-[ ] With centered logo
+- [x] Transparent background
+- [x] PNG transparent background download
+- [ ] With centered logo
 
 ## Versioning
 
@@ -279,6 +279,6 @@ If you like this project and want to contribute us, then you can send us a cup o
 
 | PAYPAL.ME            | MOMO App (Vietnam) |
 |:--------------------:|:------------------:|
-| <img src="./assets/qr-code-paypal.png" style="width: 100px" alt="support us"> | <img src="./assets/qr-code-momo.jpg" style="width: 100px" alt="support us"> |
+| <img src="./assets/qr-code-paypal.png" style="max-width: 100px;" alt="support us"> | <img src="./assets/qr-code-momo.jpg" style="max-width: 100px;" alt="support us"> |
 
 [⬆ back to top](#table-of-contents)
