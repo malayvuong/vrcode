@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test VRCODE</title>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script src="../dist/vrcode.js"></script>
+  <script src="/dist/vrcode.js"></script>
   <style>
     body{background: #efefef; color: black;}
   </style>
@@ -13,18 +13,36 @@
 <body>
   <center>
     <div id="app">
-      <p>Text: {{ text }}</p>
+      <p>Text: {{ text }}
+        <img style="display: block; width: 40px;" :src="logo" alt="">
+      </p>
+      <p>SVG Example</p>
+      <vrcode
+        :value="text"
+        v-model="text"
+        type="svg" transparent
+        :logo="logo"
+        :opacity="90"
+        :options="{
+          size: 300
+        }"
+      ></vrcode>
+      <p>Canvas Example</p>
       <vrcode
         :value="text"
         v-model="text"
         :download="{
-          text: 'Download',
+          text: 'Download Canvas',
           filename: 'file-name.png',
           visible: true, type: 'image/png',
           style: 'color: #abc123; padding-top: 15px; display: block;'
         }"
-        transparent
-        logo="../assets/logo-square.png"
+        type="canvas" transparent
+        :logo="logo"
+        :opacity="90"
+        :options="{
+          size: 300
+        }"
       ></vrcode>
     </div>
   </center>
@@ -32,7 +50,8 @@
 var app = new Vue({
     el: '#app',
     data: {
-      text: 'Hello User! Let\'s scan me!'
+      text: 'Hello User! Let\'s scan me! This is a long texture.',
+      logo: '/assets/logo-square.png'
     },
 })
 Vue.component('vrcode', vrcode);

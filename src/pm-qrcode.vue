@@ -2,7 +2,7 @@
   <div>
     <qrcode-vue
       :id="`qrcode-${randId}`"
-      :renderas="options.type"
+      :renderas="type"
       :value="textToQR"
       :padding="options.padding"
       :classname="options.className"
@@ -11,6 +11,8 @@
       :background="options.background"
       :foreground="options.foreground"
       :transparent="transparent"
+      :logo="logo"
+      :opacity="opacity"
     />
     <a
       v-if="type === 'canvas' && download.visible"
@@ -37,55 +39,61 @@
 import QRCodePM from './vue-qrcode.js'
 
 export default {
-    name: 'VrCode',
-    components: {
-        'qrcode-vue': QRCodePM
+  name: 'VrCode',
+  components: {
+    'qrcode-vue': QRCodePM
+  },
+  props: {
+    value: {
+      type: [String, Object], default: null
     },
-    props: {
-        value: {
-            type: [String, Object], default: null
-        },
-        download: {
-            type: Object,
-            default: function() {
-                return {
-                    visible: false,
-                }
-            },
-        },
-        options: {
-          type: Object,
-          default: function() {
-            return {
-              size: 100,
-              background: '#ffffff',
-              foreground: '#000000',
-              className: '',
-              level: 'L',
-              padding: 10
-            }
-          },
-        },
-        type: {
-            type: String, default: 'canvas'
-        },
+    download: {
+      type: Object,
+      default: function() {
+        return {
+          visible: false,
+        }
+      },
+    },
+    options: {
+      type: Object,
+      default: function() {
+        return {
+          size: 100,
+          background: '#ffffff',
+          foreground: '#000000',
+          className: '',
+          level: 'L',
+          padding: 10
+        }
+      },
+    },
+    type: {
+      type: String, default: 'canvas'
+    },
 
-        // Helpers options
-        helpers: {type: String, default: 'text'},
-        //  Set Transparent Background (Only for Canvas)
-        transparent: {type: Boolean, default: false},
-    },
-    data() {
-      return {
-        randId: '',
-        textToQR: ''
-      }
-    },
-    watch: {
-      value(val) {
-        this.setTextToQr()
-      }
-    },
+    // Helpers options
+    helpers: {type: String, default: 'text'},
+    //  Set Transparent Background (Only for Canvas)
+    transparent: {type: Boolean, default: false},
+    //  logo centered
+    logo: { type: String, default: null },
+    //  Logo Opacity
+    opacity: {
+      type: Number, default: 100
+    }
+  },
+  data() {
+    return {
+      randId: '',
+      textToQR: ''
+    }
+  },
+  watch: {
+    value(val) {
+      this.setTextToQr()
+    }
+  },
     created() {
         this.randId = Math.floor((Math.random() * 1000) + 1);
 

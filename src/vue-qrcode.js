@@ -80,6 +80,39 @@ function generatePath(modules, margin = 0) {
   return ops.join('')
 }
 
+/**
+ * Logo init
+ *-------------------
+ * @author malayvuong
+ *
+**/
+function maskLogo(renderAs = 'canvas', logo, ctx, size, opacity) {
+  if(renderAs === 'canvas') {
+    // 1: math logo scale width & height (300 = 46)
+    let widthScale = parseInt(size * 46 / 300);
+    let position = (size / 2) - (widthScale / 2)
+    let centered = (size / 2);
+    console.log(opacity / 100);
+    //  Load Logo Image
+    var img = new Image();
+    img.onload = () => {
+      //  Set Opacity
+      ctx.globalAlpha = (opacity / 100);
+      //  Process to draw white circle
+      // drawCircle(ctx, centered, widthScale)
+      //  Process to draw logo
+      ctx.drawImage(img, position, position, widthScale, widthScale)
+    }
+    img.src = logo;
+  }
+  function drawCircle(ctx, centered, radius = 50, color = 'white') {
+    ctx.beginPath();
+    ctx.arc(centered, centered, ((radius / 2) + 2), 0, 2 * Math.PI, false);
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+}
+
 // @vue/component
 const QrcodeVue = {
   props: {
@@ -93,8 +126,7 @@ const QrcodeVue = {
       default: '',
     },
     size: {
-      type: [Number, String],
-      default: 100,
+      type: [Number, String], default: 100,
       validator: (s) => isNaN(Number(s)) !== true,
     },
     level: {
@@ -123,6 +155,14 @@ const QrcodeVue = {
     transparent: {
       type: Boolean,
       default: false
+    },
+    logo: {
+      type: String,
+      default: null,
+    },
+    opacity: {
+      type: [Number, String], default: 100,
+      validator: (s) => isNaN(Number(s)) !== true,
     }
   },
   data() {
@@ -139,7 +179,7 @@ const QrcodeVue = {
   },
   methods: {
     render() {
-      const { value, size, level, background, foreground, renderas, padding, transparent } = this
+      const { value, size, level, background, foreground, renderas, padding, transparent, logo, opacity } = this
       const _size = size >>> 0 // size to number
 
       // We'll use type===-1 to force QRCode to automatically pick the best type
@@ -197,21 +237,30 @@ const QrcodeVue = {
             }
           })
         })
+
+        //  Begin insert logo
+        if(logo) {
+          maskLogo(renderas, logo, ctx, _size, opacity)
+        }
       }
     },
   },
   render(createElement) {
     const {
       classname,
-      value,
-      level,
+      transparent,
       background,
       foreground,
       size,
       renderas,
       numCells,
       fgPath,
+      logo,
+      opacity
     } = this
+
+    let logoWidth = (numCells * 46 / 300);
+    let logoPosition = (numCells / 2) - (logoWidth / 4);
 
     return createElement(
       'div',
@@ -227,20 +276,27 @@ const QrcodeVue = {
                   height: size,
                   width: size,
                   shapeRendering: 'crispEdges',
-                  viewBox: `0 0 ${numCells} ${numCells}`,
+                  viewBox: `0 0 ${numCells + 2} ${numCells + 2}`,
                 },
                 style: { width: size + 'px', height: size + 'px' },
               },
               [
-                createElement('path', {
+                !transparent ? createElement('path', {
                   attrs: {
                     fill: background,
-                    d: `M0,0 h${numCells}v${numCells}H0z`,
+                    d: `M0,0 h${numCells + 2}v${numCells + 2}H0z`,
                   },
-                }),
+                }) : false,
                 createElement('path', {
-                  attrs: { fill: foreground, d: fgPath },
+                  attrs: { transform: 'translate(1, 1)', fill: foreground, d: fgPath },
                 }),
+                logo ? createElement('image', {
+                  attrs: {
+                    href: logo, opacity: (opacity / 100),
+                    x: logoPosition, y: logoPosition,
+                    height: logoWidth, width: logoWidth
+                  },
+                }) : false
               ]
             )
           : createElement(

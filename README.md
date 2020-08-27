@@ -92,6 +92,18 @@ Transparent background for canvas and download png image. If `transparent` is se
 
 **Notes: If after you run `npm update` but the QR Code not generate transparent background, please run `npm clean-install` and run build again.**
 
+### logo
+- Type: `String`
+- Default: `null`
+
+Your Brand Logo URL.
+
+### opacity
+- Type: `Number`
+- Default: `100`
+
+Opacity of Logo, by default 100 ~ `opacity: 1`. We will division this number to 100 and set opacity to it.
+
 ### options
 
 - Type: `Object`
@@ -142,12 +154,12 @@ This helper generates an e-mail qrcode that is able to fill in the e-mail addres
 
 ```html
 <vrcode
-    :value="{
-      address: 'email@example.com',
-      subject: 'Hello',
-      body: 'This is body'
-    }"
-    helpers="email"
+  :value="{
+    address: 'email@example.com',
+    subject: 'Hello',
+    body: 'This is body'
+  }"
+  helpers="email"
 ></vrcode>
 ```
 
@@ -156,8 +168,8 @@ This helper generates a QrCode that can be scanned and then dials a number.
 
 ```html
 <vrcode
-    value="+1 98-765-43-21"
-    helpers="call"
+  value="+1 98-765-43-21"
+  helpers="call"
 ></vrcode>
 ```
 
@@ -166,11 +178,11 @@ This helper makes SMS messages that can be prefilled with the send to address an
 
 ```html
 <vrcode
-    :value="{
-      number: '+1 98-765-43-21',
-      message: 'Hello, this message can be null'
-    }"
-    helpers="sms"
+  :value="{
+    number: '+1 98-765-43-21',
+    message: 'Hello, this message can be null'
+  }"
+  helpers="sms"
 ></vrcode>
 ```
 
@@ -179,12 +191,12 @@ This helper generates a latitude and longitude that a phone can read and opens t
 
 ```html
 <vrcode
-    :value="{
-      lng: 10.7800965,
-      lat: 106.6854548,
-      name: 'QR Guiding'
-    }"
-    helpers="geo"
+  :value="{
+    lng: 10.7800965,
+    lat: 106.6854548,
+    name: 'QR Guiding'
+  }"
+  helpers="geo"
 ></vrcode>
 ```
 
@@ -247,26 +259,25 @@ This helpers makes scannable QrCodes that add to contact list. You can use `meca
 
 ```html
 <vrcode
-    :value="{
-      name: 'Your name',
-      company: 'Your company name',
-      phone: 'Your Phone number',
-      url: 'Your Website Url',
-      email: 'Your Email address',
-      address: 'Your Address',
-      title: 'Your Title',
-      note: 'Your Notes'
-    }"
-    helpers="vcard"
+  :value="{
+    name: 'Your name',
+    company: 'Your company name',
+    phone: 'Your Phone number',
+    url: 'Your Website Url',
+    email: 'Your Email address',
+    address: 'Your Address',
+    title: 'Your Title',
+    note: 'Your Notes'
+  }"
+  helpers="vcard"
 ></vrcode>
 ```
 
-
 ## Milestone
 
-- [x] Transparent background
-- [x] PNG transparent background download
-- [ ] With centered logo
+- [x] Transparent background (Finished at 2020-08-08)
+- [x] PNG transparent background download (Finished at 2020-08-08)
+- [x] With centered logo (Finished at 2020-08-28)
 
 ## Versioning
 
