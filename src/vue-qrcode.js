@@ -39,9 +39,9 @@ function toUTF8String(str) {
 
 function generatePath(modules, margin = 0) {
   const ops = []
-  modules.forEach(function(row, y) {
+  modules.forEach(function (row, y) {
     let start = null
-    row.forEach(function(cell, x) {
+    row.forEach(function (cell, x) {
       if (!cell && start !== null) {
         // M0 0h7v1H0z injects the space with the move and drops the comma,
         // saving a char per operation
@@ -66,7 +66,7 @@ function generatePath(modules, margin = 0) {
           // Otherwise finish the current line.
           ops.push(
             `M${start + margin},${y + margin} h${x + 1 - start}v1H${start +
-              margin}z`
+            margin}z`
           )
         }
         return
@@ -86,10 +86,11 @@ function generatePath(modules, margin = 0) {
  * @author malayvuong
  *
 **/
-function maskLogo(renderAs = 'canvas', logo, ctx, size, opacity) {
-  if(renderAs === 'canvas') {
+function maskLogo(renderAs = 'canvas', logo, ctx, size, opacity, logosize) {
+  if (renderAs === 'canvas') {
     // 1: math logo scale width & height (300 = 46)
-    let widthScale = parseInt(size * 46 / 300);
+    let widthScale = logosize ? logosize : parseInt(size * 46 / 300);
+    // let widthScale = parseInt(size * 46 / 300);
     let position = (size / 2) - (widthScale / 2)
     let centered = (size / 2);
     console.log(opacity / 100);
@@ -160,6 +161,10 @@ const QrcodeVue = {
       type: String,
       default: null,
     },
+    logosize: {
+      type: Number,
+      default: null,
+    },
     opacity: {
       type: [Number, String], default: 100,
       validator: (s) => isNaN(Number(s)) !== true,
@@ -179,7 +184,7 @@ const QrcodeVue = {
   },
   methods: {
     render() {
-      const { value, size, level, background, foreground, renderas, padding, transparent, logo, opacity } = this
+      const { value, size, level, background, foreground, renderas, padding, transparent, logo, opacity, logosize } = this
       const _size = size >>> 0 // size to number
 
       // We'll use type===-1 to force QRCode to automatically pick the best type
@@ -211,26 +216,26 @@ const QrcodeVue = {
         ctx.scale(scale, scale)
         ctx.fillStyle = background;
         //  Set background
-        if(transparent) {
+        if (transparent) {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
         } else {
           ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
 
-        cells.forEach(function(row, rdx) {
-          row.forEach(function(cell, cdx) {
+        cells.forEach(function (row, rdx) {
+          row.forEach(function (cell, cdx) {
             const w = Math.ceil((cdx + 1) * tileW) - Math.floor(cdx * tileW)
             const h = Math.ceil((rdx + 1) * tileH) - Math.floor(rdx * tileH)
-            if(cell) {
+            if (cell) {
               ctx.fillStyle = foreground
             } else {
-              if(transparent) {
+              if (transparent) {
 
-              }else {
+              } else {
                 ctx.fillStyle = background
               }
             }
-            if(!cell && transparent) {
+            if (!cell && transparent) {
               ctx.clearRect(Math.round(cdx * tileW) + padding, Math.round(rdx * tileH) + padding, w, h);
             } else {
               ctx.fillRect(Math.round(cdx * tileW) + padding, Math.round(rdx * tileH) + padding, w, h)
@@ -239,8 +244,8 @@ const QrcodeVue = {
         })
 
         //  Begin insert logo
-        if(logo) {
-          maskLogo(renderas, logo, ctx, _size, opacity)
+        if (logo) {
+          maskLogo(renderas, logo, ctx, _size, opacity, logosize)
         }
       }
     },
@@ -256,11 +261,13 @@ const QrcodeVue = {
       numCells,
       fgPath,
       logo,
+      logosize,
       opacity
     } = this
 
-    let logoWidth = (numCells * 46 / 300);
-    let logoPosition = (numCells / 2) - (logoWidth / 4);
+    let logoWidth = logosize ? logosize : (numCells * 46 / 300);
+    // let logoPosition = (numCells / 2) - (logoWidth / 4);
+    let logoPosition = logosize ? (numCells / 2) - (logoWidth / 2.3) : (numCells / 2) - (logoWidth / 4);
 
     return createElement(
       'div',
@@ -270,44 +277,44 @@ const QrcodeVue = {
       },
       [
         renderas === 'svg' ? createElement(
-              'svg',
-              {
-                attrs: {
-                  height: size,
-                  width: size,
-                  shapeRendering: 'crispEdges',
-                  viewBox: `0 0 ${numCells + 2} ${numCells + 2}`,
-                },
-                style: { width: size + 'px', height: size + 'px' },
+          'svg',
+          {
+            attrs: {
+              height: size,
+              width: size,
+              shapeRendering: 'crispEdges',
+              viewBox: `0 0 ${numCells + 2} ${numCells + 2}`,
+            },
+            style: { width: size + 'px', height: size + 'px' },
+          },
+          [
+            !transparent ? createElement('path', {
+              attrs: {
+                fill: background,
+                d: `M0,0 h${numCells + 2}v${numCells + 2}H0z`,
               },
-              [
-                !transparent ? createElement('path', {
-                  attrs: {
-                    fill: background,
-                    d: `M0,0 h${numCells + 2}v${numCells + 2}H0z`,
-                  },
-                }) : false,
-                createElement('path', {
-                  attrs: { transform: 'translate(1, 1)', fill: foreground, d: fgPath },
-                }),
-                logo ? createElement('image', {
-                  attrs: {
-                    href: logo, opacity: (opacity / 100),
-                    x: logoPosition, y: logoPosition,
-                    height: logoWidth, width: logoWidth
-                  },
-                }) : false
-              ]
-            )
+            }) : false,
+            createElement('path', {
+              attrs: { transform: 'translate(1, 1)', fill: foreground, d: fgPath },
+            }),
+            logo ? createElement('image', {
+              attrs: {
+                href: logo, opacity: (opacity / 100),
+                x: logoPosition, y: logoPosition,
+                height: logoWidth, width: logoWidth
+              },
+            }) : false
+          ]
+        )
           : createElement(
-              'canvas',
-              {
-                attrs: { height: size, width: size },
-                style: { width: size + 'px', height: size + 'px' },
-                ref: 'vrcode',
-              },
-              []
-            ),
+            'canvas',
+            {
+              attrs: { height: size, width: size },
+              style: { width: size + 'px', height: size + 'px' },
+              ref: 'vrcode',
+            },
+            []
+          ),
       ]
     )
   },
