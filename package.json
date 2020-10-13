@@ -22,8 +22,8 @@
     "webpack-merge": "^4.2.2"
   },
   "scripts": {
-    "dev": "node_modules/webpack/bin/webpack.js --mode production --watch --progress",
-    "build": "node_modules/webpack/bin/webpack.js --mode production --progress"
+    "dev": "webpack --mode production --watch --progress",
+    "build": "webpack --mode production --progress"
   },
   "eslintConfig": {
     "extends": [
