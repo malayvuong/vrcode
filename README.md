@@ -287,11 +287,4 @@ Maintained under the [Semantic Versioning guidelines](https://semver.org/).
 
 [MIT](https://opensource.org/licenses/MIT) © [Malayvuong](https://malayvuong.com/)
 
-## Invite me a cup of coffee
-If you like this project and want to contribute us, then you can send us a cup of coffee by this ways below:
-
-| PAYPAL.ME            | MOMO App (Vietnam) |
-|:--------------------:|:------------------:|
-| <img src="./assets/qr-code-paypal.png" style="max-width: 100px;" alt="support us"> | <img src="./assets/qr-code-momo.jpg" style="max-width: 100px;" alt="support us"> |
-
 [⬆ back to top](#table-of-contents)
