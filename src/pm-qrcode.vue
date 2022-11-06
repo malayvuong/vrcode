@@ -123,7 +123,7 @@ export default {
           this.textToQR = `tel:${this.value || 0}`;
           break;
         case "sms":
-          this.textToQR = `sms:${this.value.number || 0}${
+          this.textToQR = `SMSTO:${this.value.number || 0}${
             this.value.message ? ":" + this.value.message : ""
           }`;
           break;
